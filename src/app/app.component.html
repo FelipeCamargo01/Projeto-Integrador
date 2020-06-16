@@ -1,21 +1,487 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<nav class="navbar navbar-dark bg-dark" style="height: 12.5vh;">
+  <a class="navbar-brand" href="#">
+    <img src="https://i.pinimg.com/originals/d9/12/09/d91209340bdc005936c46323a62caaff.png" width="30" height="30"
+      class="d-inline-block align-top" alt="">
+    Nome Projeto
+  </a>
+</nav>
+<div class="row">
+  <div class="col-xl-6">
+    <div class="d-flex mt-3 ml-5">
+      <!-- <div class="d-flex justify-content-center mt-3"> -->
+      <!-- <div style="height: 75vh; width: 35vw; border: 5px solid black; overflow: hidden; color: white; background-color: #4b4b4d;"> -->
+      <div
+        style="height: 75vh; width: 35vw; box-shadow: 2px 2px 5px 0.1px black; border: 15px solid #9F6820; overflow: hidden; color: white; background: radial-gradient(circle, rgba(16,111,76,1) 10%, rgba(15,103,69,1) 93%, rgba(12,83,51,1) 100%)">
+        <div class="text-center pt-3">
+          <h1>Bem Vindo!</h1>
+          <div *ngIf="screenType == 'combinatorio'">
+            <h4 class="text-center">Combinação.</h4>
+          </div>
+          <div *ngIf="screenType == 'matriz'">
+            <h4 class="text-center">Operação Matricial.</h4>
+          </div>
+          <div *ngIf="screenType == 'logica'">
+            <h4 class="text-center">Lógica Proposicional.</h4>
+            <br />
+            <br />
+          </div>
+          <div *ngIf="screenType == 'somatorio'">
+            <h4 class="text-center">Somatório.</h4>
+          </div>
+        </div>
+        <div class="pl-5">
+          <div *ngIf="screenType == 'combinatorio'">
+            <br />
+            <div class="row">
+              Aperte 1 para: Permutação Simples.
+            </div>
+            <br />
+            <div class="row">
+              Aperte 2 para: Arranjo Simples.
+            </div>
+            <br />
+            <div class="row">
+              Aperte 3 para: Combinação Simples.
+            </div>
+            <br />
+            <div class="row">
+              Aperte 4 para: Voltar.
+            </div>
+          </div>
+          <div *ngIf="screenType == 'logica'">
+            <div class="row">
+              <b>
+                OBS: Checkbox Selecionado para Verdadeiro e não selecionado para Falso
+              </b>
+            </div>
+            <div class="row">
+              Aperte 1 para: ~ 𝑝.
+            </div>
+            <div class="row">
+              Aperte 2 para: ~ 𝑞.
+            </div>
+            <div class="row">
+              Aperte 3 para: 𝑝 ∧ 𝑞 .
+            </div>
+            <div class="row">
+              Aperte 4 para: 𝑝 ∨ 𝑞.
+            </div>
+            <div class="row">
+              Aperte 5 para 𝑝 _∨_ 𝑞.
+            </div>
+            <div class="row">
+              Aperte 6 para 𝑝 → 𝑞.
+            </div>
+            <div class="row">
+              Aperte 7 para 𝑝 ↔ 𝑞.
+            </div>
+            <div class="row">
+              Aperte 8 para Voltar.
+            </div>
+          </div>
+          <div *ngIf="screenType == 'somatorio'">
+            <div class="row">
+              Aperte no 1 para: Somatório de m até n. <br />
+              &nbsp; n <br />
+              &nbsp; ∑ &nbsp;j <br />
+              j = m
+            </div>
+            <div class="row">
+              Aperte no 2 para: Somatório de -j elevado a j + 1. <br />
+              &nbsp; n <br />
+              &nbsp; ∑ (−𝑗)^(𝑗+1) <br />
+              j = m
+            </div>
+            <div class="row">
+              Aperte no 3 para: Voltar.
+            </div>
+          </div>
+          <div *ngIf="screenType == 'matriz'">
+            <br />
+            <div class="row">
+              Aperte no 1 para: Calcular o Determinante.
+            </div>
+            <br />
+            <div class="row">
+              Aperte no 2 para: Calcular a Soma Entre a Matriz A e B.
+            </div>
+            <br />
+            <div class="row">
+              Aperte no 3 para: Calcular a Subtração entre a Matriz A e B.
+            </div>
+            <br />
+            <div class="row">
+              Aperte no 4 para: Calcular a Multiplicação entre a Matriz A E B.
+            </div>
+            <br />
+            <div class="row">
+              Aperte no 5 para: Voltar.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-6">
+    <div class="d-flex mt-3">
+      <!-- <div class="d-flex justify-content-center mt-3"> -->
+      <div
+        style="height: 75vh; width: 35vw; border-radius: 15px; border: 5px solid black; overflow: hidden; box-shadow: 2px 2px 2px black">
+        <div class="calculator-header">
+          <div class="screen">
+            <div class="text-center" style="padding-top: 20px;">
+              <div
+                *ngIf="screenTypeBody == 'combinatorio-1' || screenTypeBody == 'combinatorio-2' || screenTypeBody == 'combinatorio-3' || screenTypeBody == 'matriz-1' || screenTypeBody == 'somatorio-1' || screenTypeBody == 'somatorio-2' || screenTypeBody == 'logica-1' || screenTypeBody == 'logica-2' || screenTypeBody == 'logica-3' || screenTypeBody == 'logica-4' || screenTypeBody == 'logica-5' || screenTypeBody == 'logica-6' || screenTypeBody == 'logica-7' && result != null">
+                {{result}}
+              </div>
+              <div
+                *ngIf="screenTypeBody == 'matriz-2' || screenTypeBody == 'matriz-3' || screenTypeBody == 'matriz-4' && resultArray11 != null">
+                {{resultArray11}} &nbsp; &nbsp; {{resultArray12}} <br />
+                {{resultArray21}} &nbsp; &nbsp; {{resultArray22}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="calculator-body">
+          <div class="container">
+            <div *ngIf="buttonScreenType == 'initial'" style="width: 32vw;">
+              <div class="d-flex justify-content-between pt-3">
+                <div class=""><button type="button" class="btn btn-dark"
+                    (click)="changeScreen('matriz')">Matriz</button></div>
+                <div class=""><button type="button" class="btn btn-dark"
+                    (click)="changeScreen('somatorio')">Somatório</button></div>
+                <div class=""><button type="button" class="btn btn-dark"
+                    (click)="changeScreen('logica')">Lógica</button></div>
+                <div class=""><button type="button" class="btn btn-dark"
+                    (click)="changeScreen('combinatorio')">Combinatório</button></div>
+              </div>
+            </div>
+            <div *ngIf="buttonScreenType == 'secondOptions'">
+              <div *ngIf="screenType == 'matriz'" style="width: 32vw;">
+                <div class="d-flex justify-content-between pt-3">
+                  <div class=""><button type="button" class="btn btn-dark"
+                      (click)="changeScreenTypeBody('matriz-1')">1</button></div>
+                  <div class=""><button type="button" class="btn btn-dark"
+                      (click)="changeScreenTypeBody('matriz-2')">2</button></div>
+                  <div class=""><button type="button" class="btn btn-dark"
+                      (click)="changeScreenTypeBody('matriz-3')">3</button></div>
+                  <div class=""><button type="button" class="btn btn-dark"
+                      (click)="changeScreenTypeBody('matriz-4')">4</button></div>
+                  <div class=""><button type="button" class="btn btn-dark"
+                      (click)="changeScreenTypeBody('initial')">5</button>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="screenType == 'somatorio'" style="width: 32vw;">
+                <div class="d-flex justify-content-between pt-3">
+                  <div class=""><button type="button" (click)="changeScreenTypeBody('somatorio-1')"
+                      class="btn btn-dark">1</button></div>
+                  <div class=""><button type="button" (click)="changeScreenTypeBody('somatorio-2')"
+                      class="btn btn-dark">2</button>
+                  </div>
+                  <div class=""><button type="button" (click)="changeScreenTypeBody('initial')"
+                      class="btn btn-dark">3</button>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="screenType == 'logica'">
+                <div style="width: 32vw;">
+                  <!-- <div class="d-flex flex-row pt-3" style="max-width: 12vw;"> -->
+                  <div class="d-flex justify-content-between pt-3">
+                    <div class=""><button type="button" (click)="changeScreenTypeBody('logica-1')"
+                        class="btn btn-sm btn-light" class="btn btn-dark">1</button></div>
+                    <div class=""><button type="button" (click)="changeScreenTypeBody('logica-2')"
+                        class="btn btn-dark">2</button>
+                    </div>
+                    <div class=""><button type="button" (click)="changeScreenTypeBody('logica-3')"
+                        class="btn btn-dark">3</button>
+                    </div>
+                    <div class=""><button type="button" (click)="changeScreenTypeBody('logica-4')"
+                        class="btn btn-dark">4</button>
+                    </div>
+                    <div class=""><button type="button" (click)="changeScreenTypeBody('logica-5')"
+                        class="btn btn-dark">5</button>
+                    </div>
+                    <div class=""><button type="button" (click)="changeScreenTypeBody('logica-6')"
+                        class="btn btn-dark">6</button>
+                    </div>
+                    <div class=""><button type="button" (click)="changeScreenTypeBody('logica-7')"
+                        class="btn btn-dark">7</button>
+                    </div>
+                    <div class=""><button type="button" (click)="changeScreenTypeBody('initial')"
+                        class="btn btn-dark">8</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="screenType == 'combinatorio'">
+                <div class="d-flex justify-content-between pt-3" style="width: 32vw;">
+                  <div class=""><button type="button" (click)="changeScreenTypeBody('combinatorio-1')"
+                      class="btn btn-dark">1</button>
+                  </div>
+                  <div class=""><button type="button" (click)="changeScreenTypeBody('combinatorio-2')"
+                      class="btn btn-dark">2</button>
+                  </div>
+                  <div class=""><button type="button" (click)="changeScreenTypeBody('combinatorio-3')"
+                      class="btn btn-dark">3</button>
+                  </div>
+                  <div class=""><button type="button" (click)="changeScreenTypeBody('initial')"
+                      class="btn btn-dark">4</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div *ngIf="screenTypeBody == 'somatorio-1' || screenTypeBody == 'somatorio-2'" style="width: 32vw;">
+                <form [formGroup]="somatorio" (ngSubmit)="calcularSomatorio()">
+                  <div class="mt-5">
+                    <div class="d-flex justify-content-center">
+                      <label>
+                        M: <input type="number" style="width: 60px; height: 40px" formControlName="m">
+                      </label>
+                      <label class="pl-2">
+                        N: <input type="number" style="width: 60px; height: 40px" formControlName="n">
+                      </label>
+                    </div>
+                    <div class="d-flex justify-content-center mt-5">
+                      <button type="submit" class="btn btn-primary">Calcular</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div *ngIf="screenTypeBody == 'logica-1'" style="width: 32vw;">
+                <form [formGroup]="logica" (ngSubmit)="calcularLogica()">
+                  <div class="d-flex justify-content-center mt-5">
+                    <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-dark active">
+                        p:
+                        <input type="checkbox" name="" id="" formControlName="p" checked autocomplete="off">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center mt-4">
+                    <button type="submit" class="btn btn-primary">Calcular</button>
+                  </div>
+                </form>
+              </div>
+              <div *ngIf="screenTypeBody == 'logica-2'" style="width: 32vw;">
+                <form [formGroup]="logica" (ngSubmit)="calcularLogica()">
+                  <div class="d-flex justify-content-center mt-5">
+                    <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-dark active">
+                        q:
+                        <input type="checkbox" name="" id="" formControlName="q" checked autocomplete="off">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center mt-4">
+                    <button type="submit" class="btn btn-primary">Calcular</button>
+                  </div>
+                </form>
+              </div>
+              <div
+                *ngIf="screenTypeBody == 'logica-3' || screenTypeBody == 'logica-4' || screenTypeBody == 'logica-5' || screenTypeBody == 'logica-6' || screenTypeBody == 'logica-7'"
+                style="width: 32vw;">
+                <form [formGroup]="logica" (ngSubmit)="calcularLogica()">
+                  <div class="d-flex justify-content-center mt-5">
+                    <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-dark active">
+                        p:
+                        <input type="checkbox" name="" id="" default="false" formControlName="p" checked autocomplete="off">
+                      </label>
+                      <div class="ml-4">
+                        <div *ngIf="screenTypeBody == 'logica-3'">
+                          <h4>∧</h4>
+                        </div>
+                        <div *ngIf="screenTypeBody == 'logica-4'">
+                          <h4>∨</h4>
+                        </div>
+                        <div *ngIf="screenTypeBody == 'logica-5'">
+                          <h4>_∨_</h4>
+                        </div>
+                        <div *ngIf="screenTypeBody == 'logica-6'">
+                          <h4>→</h4>
+                        </div>
+                        <div *ngIf="screenTypeBody == 'logica-7'">
+                          <h4>↔</h4>
+                        </div>
+                      </div>
+                      <label class="btn btn-dark active ml-4">
+                        q:
+                        <input type="checkbox" name="" id="" default="false" formControlName="q" checked autocomplete="off">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center mt-4">
+                    <button type="submit" class="btn btn-primary">Calcular</button>
+                  </div>
+                </form>
+              </div>
+              <div *ngIf="screenTypeBody == 'matriz-1'" class="mt-2" style="width: 32vw;">
+                <div class="text-center">
+                  <h5>Determinante</h5>
+                </div>
+                <form [formGroup]="array1" (ngSubmit)="calcularArray()">
+                  <div class="d-flex justify-content-center">
+                    <div class="row">
+                      <div class=""></div>
+                      <div class="">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a11">
+                        </label>
+                      </div>
+                      <div class="pl-5">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a12">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <div class="row">
+                      <div class=""></div>
+                      <div class="">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a21">
+                        </label>
+                      </div>
+                      <div class="pl-5">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a22">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Calcular</button>
+                  </div>
+                </form>
+              </div>
+              <div *ngIf="screenTypeBody == 'matriz-2' || screenTypeBody == 'matriz-3' || screenTypeBody == 'matriz-4'"
+                class="mt-2" style="width: 32vw;">
+                <div *ngIf="screenTypeBody == 'matriz-2'" class="text-center">
+                  <h5>Soma</h5>
+                </div>
+                <div *ngIf="screenTypeBody == 'matriz-3'" class="text-center">
+                  <h5>Subtração</h5>
+                </div>
+                <div *ngIf="screenTypeBody == 'matriz-4'" class="text-center">
+                  <h5>Produto</h5>
+                </div>
+                <form [formGroup]="array2" (ngSubmit)="calcularArray()">
+                  <div class="d-flex justify-content-center">
+                    <div class="row">
+                      <div class=""></div>
+                      <div class="">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a11">
+                        </label>
+                      </div>
+                      <div class="pl-5 pr-3">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a12">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class=""></div>
+                      <div class="pl-5">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a11_2">
+                        </label>
+                      </div>
+                      <div class="pl-5">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a12_2">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <div *ngIf="screenTypeBody == 'matriz-2'" class="text-center">
+                      <h2>+</h2>
+                    </div>
+                    <div *ngIf="screenTypeBody == 'matriz-3'" class="text-center">
+                      <h2>-</h2>
+                    </div>
+                    <div *ngIf="screenTypeBody == 'matriz-4'" class="text-center">
+                      <h2>X</h2>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <div class="row">
+                      <div class=""></div>
+                      <div class="">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a21">
+                        </label>
+                      </div>
+                      <div class="pl-5 pr-3">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a22">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class=""></div>
+                      <div class="pl-5">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a21_2">
+                        </label>
+                      </div>
+                      <div class="pl-5">
+                        <label>
+                          <input type="number" style="width: 40px; height: 40px" formControlName="a22_2">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Calcular</button>
+                  </div>
+                </form>
+              </div>
+              <div *ngIf="screenTypeBody == 'combinatorio-1'" style="width: 32vw">
+                <form [formGroup]="combinacao" (ngSubmit)="calcularCombinatorio()">
+                  <div class="d-flex justify-content-center mt-5">
+                    <h4 class="pr-3">P<small>n</small></h4>
+                    <input type="number" formControlName="n" id="">
+                  </div>
+                  <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-primary">Calcular</button>
+                  </div>
+                </form>
+              </div>
+              <div *ngIf="screenTypeBody == 'combinatorio-2' || screenTypeBody == 'combinatorio-3'" class="mt-5" style="width: 32vw;">
+                <form [formGroup]="combinacao" (ngSubmit)="calcularCombinatorio()">
+                  <div class="d-flex justify-content-center">
+                    <div class="ml-3">
+                      <input type="number" width="50px" placeholder="N" formControlName="n" id="">
+                    </div>
+                    <div class="ml-3">
+                      <div *ngIf="screenTypeBody == 'combinatorio-2'">
+                        <h4>A<small>n,k</small></h4>
+                      </div>
+                      <div *ngIf="screenTypeBody == 'combinatorio-3'">
+                      <h4>C<small>n,k</small></h4>
+                      </div>
+                    </div>
+                    <div class="ml-3">
+                      <input type="number" width="50px" placeholder="K" formControlName="k" id="">
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-primary">Calcular</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
-<router-outlet></router-outlet>
