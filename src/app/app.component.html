@@ -1,11 +1,16 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<nav class="navbar navbar-dark bg-dark" style="height: 12.5vh;">
+<nav class="navbar" style="height: 12.5vh; background-color: #F0F8FF	">
   <a class="navbar-brand" href="#">
-    <img src="https://i.pinimg.com/originals/d9/12/09/d91209340bdc005936c46323a62caaff.png" width="30" height="30"
-      class="d-inline-block align-top" alt="">
-    Nome Projeto
+    <img
+      src="https://uploaddeimagens.com.br/images/002/718/602/thumb/WhatsApp_Image_2020-06-16_at_7-removebg-preview_%281%29.png?1592661031"
+      width="80" height="60" class="d-inline-block align-top" alt="">
   </a>
+  <div style="color: blue;" class="text-left">
+    <h4 style="font-weight: bolder;">
+      A.M.P.L.O CALCULATOR
+    </h4>
+  </div>
 </nav>
 <div class="row">
   <div class="col-xl-6">
@@ -290,7 +295,8 @@
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-dark active">
                         p:
-                        <input type="checkbox" name="" id="" default="false" formControlName="p" checked autocomplete="off">
+                        <input type="checkbox" name="" id="" default="false" formControlName="p" checked
+                          autocomplete="off">
                       </label>
                       <div class="ml-4">
                         <div *ngIf="screenTypeBody == 'logica-3'">
@@ -311,7 +317,8 @@
                       </div>
                       <label class="btn btn-dark active ml-4">
                         q:
-                        <input type="checkbox" name="" id="" default="false" formControlName="q" checked autocomplete="off">
+                        <input type="checkbox" name="" id="" default="false" formControlName="q" checked
+                          autocomplete="off">
                       </label>
                     </div>
                   </div>
@@ -330,12 +337,12 @@
                       <div class=""></div>
                       <div class="">
                         <label>
-                          <input type="number" style="width: 40px; height: 40px" formControlName="a11">
+                          <input type="number" style="width: 40px; height: 40px" required formControlName="a11">
                         </label>
                       </div>
                       <div class="pl-5">
                         <label>
-                          <input type="number" style="width: 40px; height: 40px" formControlName="a12">
+                          <input type="number" style="width: 40px; height: 40px" required formControlName="a12">
                         </label>
                       </div>
                     </div>
@@ -455,26 +462,40 @@
                   </div>
                 </form>
               </div>
-              <div *ngIf="screenTypeBody == 'combinatorio-2' || screenTypeBody == 'combinatorio-3'" class="mt-5" style="width: 32vw;">
+              <div *ngIf="screenTypeBody == 'combinatorio-2' || screenTypeBody == 'combinatorio-3'" class="mt-5"
+                style="width: 32vw;">
                 <form [formGroup]="combinacao" (ngSubmit)="calcularCombinatorio()">
                   <div class="d-flex justify-content-center">
                     <div class="ml-3">
                       <input type="number" width="50px" placeholder="N" formControlName="n" id="">
+                      <!-- <div *ngIf="combinacao.get('n').invalid && (combinacao.get('n').dirty || combinacao.get('n').touched)" > -->
+                        <div *ngIf="combinacao.get('n').value <= 0 && combinacao.get('k').value <= 0" class="alert alert-danger">
+                          N ou K precisa ser positivo !
+                        </div>
+                      <!-- </div> -->
                     </div>
                     <div class="ml-3">
                       <div *ngIf="screenTypeBody == 'combinatorio-2'">
                         <h4>A<small>n,k</small></h4>
                       </div>
                       <div *ngIf="screenTypeBody == 'combinatorio-3'">
-                      <h4>C<small>n,k</small></h4>
+                        <h4>C<small>n,k</small></h4>
                       </div>
                     </div>
                     <div class="ml-3">
                       <input type="number" width="50px" placeholder="K" formControlName="k" id="">
+                      <div *ngIf="combinacao.get('n').value <= 0 && combinacao.get('k').value <= 0" class="alert alert-danger">
+                        N ou K precisa ser positivo !
+                      </div>
                     </div>
                   </div>
                   <div class="d-flex justify-content-center mt-3">
-                    <button type="submit" class="btn btn-primary">Calcular</button>
+                    <div *ngIf="combinacao.get('n').value <= 0 && combinacao.get('k').value <= 0">
+                      <button type="submit" disabled class="btn btn-primary">Calcular</button>
+                    </div>
+                    <div *ngIf="combinacao.get('n').value > 0 || combinacao.get('k').value > 0">
+                      <button type="submit" class="btn btn-primary">Calcular</button>
+                    </div>
                   </div>
                 </form>
               </div>

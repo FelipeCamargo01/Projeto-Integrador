@@ -7,7 +7,9 @@ body,html{background-color:#fff;color:#636b6f;font-family:Nunito,sans-serif;font
 .title{font-size:84px}
 .links>a{color:#636b6f;padding:0 25px;font-size:13px;font-weight:600;letter-spacing:.1rem;text-decoration:none;text-transform:uppercase}
 .m-b-md{margin-bottom:30px}
-.calculator-header{height:30%;overflow:auto;background-color:#535A5F}
-.calculator-body{overflow:auto;height:70%;background-color:#FBEB58}
+.calculator-header{height:30%;overflow:auto;background-color:#054477}
+.calculator-body{overflow:auto;height:70%;background-color:#DCDCDC}
 .screen{margin-top:30px;margin-left:35px;margin-right:35px;min-height:50%;background-color:#fff}
 .btn-circular{display: block;border-radius: 50%;}
+.btn-dark{background-color: #054477 !important}
+.btn-primary{background-color: #054477 !important}

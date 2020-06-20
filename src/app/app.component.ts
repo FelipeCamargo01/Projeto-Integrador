@@ -74,6 +74,10 @@ export class AppComponent {
         this.logica.get('p').setValue(false);
         this.logica.get('q').setValue(false);
       }
+      if(screenTypeBody == 'combinatorio-2' || screenTypeBody == 'combinatorio-3' || screenTypeBody == 'combinatorio-1') {
+        this.combinacao.get('k').setValue(0);
+        this.combinacao.get('n').setValue(0);
+      }
     }
   }
   calcularArray() {
